@@ -1,0 +1,283 @@
+/* LAYOUT */
+body{
+    background-color: #fafafa;
+}
+
+/* UTILITY*/
+.pull-up{margin-top: 20px;}
+.pull-down{margin-bottom: 20px;}
+
+/* NAVIGATION*/
+#header_title{margin: 0px;padding: 0px;}
+.navbar-nav .dropdown-menu li a img{opacity: 0.7;}
+.navbar-nav .dropdown-menu li:hover a img{opacity: 1;}
+/* display Photo */
+.home_image{
+    text-align: center;
+    margin-bottom: 10px;        
+}
+.home_image:hover{    
+    background-color: #f6f6f6;
+}
+.home_image a p.title{margin: 0px;width: 150px;}
+.home_image a:hover{color: red;font-weight: bold;}
+.home_image p.cat a{text-decoration: none;font-size: 0.9em;}
+.home_image p.cat a:hover{text-decoration: none;padding: 2px 5px;
+      background-color: #005e7b; color: white;font-weight: normal;}
+.home_image img{height: 100px;max-width: 140px;}
+.home_image > a{text-decoration: none;color: #333;}
+.dphoto{text-align: center;
+    border: 1px solid #dddddd;margin-bottom: 10px;
+    -webkit-border-top-left-radius: 5px;-webkit-border-top-right-radius: 5px;
+    border-top-left-radius: 5px;border-top-right-radius: 5px;
+}
+.dphoto:hover{
+    background-color: #dddddd;
+}
+.dphoto a{
+    text-decoration: none;color: #333333;
+}
+.dphoto p{padding: 4px;margin-bottom: 0px;}
+.dphoto .img-thumbnail{
+    border: 0px;
+    padding: 0px;
+}
+/* Home Page */
+.home_page{
+    
+}
+.sec_title{
+    font-size: 1.8em;line-height: 1em;font-weight: bold;
+    margin: 10px 0 20px 0;padding-bottom: 5px;
+    color: #0097AA;font-family: 'Oswald', 'Arial',sans-serif;letter-spacing: 0.05em;
+    border-bottom: 1px solid #0097AA;text-shadow: 1px 0px 1px #e1e1e1;
+}
+.sec_title a{
+    color: #0097AA;text-decoration: none;
+}
+.sec_title a:hover{
+    text-decoration: none;color: #006262;
+}
+/* Details */
+.dog_cat_list,
+.dog_details{
+    background-color: #fefefe;padding-bottom: 20px;margin-bottom: 20px;
+    box-shadow: 0px 0px 5px 1px #bbbbbb;-moz-box-shadow: 0px 0px 5px 1px #bbbbbb;-webkit-box-shadow: 0px 0px 5px 1px #bbbbbb;
+}
+.dog_details .info_name,
+.dog_cat_list .info_name
+{margin: 10px 0 15px 0;border-bottom: 1px solid #0097aa;padding-bottom: 10px;
+font-weight: 600;color: #0097AA;text-shadow: 1px 1px 1px gray;
+font-family: 'Oswald', 'Arial',sans-serif;letter-spacing: 0.05em;}
+.dog_details .info_para{color: #0097AA;text-shadow: 1px 1px 1px gray;letter-spacing: 0.05em;
+border-bottom: 1px solid #0097aa;padding-bottom: 5px;font-family: 'Oswald', 'Arial',sans-serif;}
+.dog_details h4.info_para{border-bottom: none;text-shadow: none;margin: 20px 0 0px 0px;}
+.dog_details p{line-height: 1.6em;font-size: 1.15em;}
+.dog_details .panel-default>.panel-heading{
+    background-color: #C0E4E0;border-color: transparent;border-bottom: none;
+    font-size: 1.3em;color: #005e7b;text-shadow: 1px 1px 1px white;
+    padding: 5px;font-family: 'Oswald', 'Arial',sans-serif;letter-spacing: 0.05em;
+}
+.overview{margin-bottom: 20px;}
+.overview h3.item_overview_heading{margin: 0px 0 5px 0;}
+.overview .item_details p{
+    font-size: 1.3em;line-height: 1.50em;text-align: justify;
+}
+.panel_dog_details{
+    padding: 0px;
+}
+.panel_dog_details>table{
+    margin-bottom: 0px;
+    cursor: default;
+}
+.panel_dog_details>table td.name{
+    background-color: #FBFBFB;color: #555;font-weight: bold;
+    border-right: 1px solid #dddddd;
+    width: 105px;    
+}
+.panel_dog_details>table td div.dog_char_item{
+    float: left;
+}
+.panel_dog_details>table td{
+    cursor: default;
+    font-size: 0.9em;padding: 4px;
+}
+/* CATEGORY */
+.blurb p{font-size: 1.2em;}
+.desc_bottom p{font-size: 1.1em;}
+.dog_list thead tr th.image{
+    width: 20%;
+}
+.dog_list thead tr th.overview{
+    width: 25%;
+}
+.dog_list thead tr th.breed{
+    width: 16%;
+}
+.dog_list thead tr th.breed_group{
+    width: 13%;
+}
+.dog_list thead tr th.size{
+    width: 13%;
+}
+.dog_list thead tr th.color{
+    width: 13%;
+}
+/* SIDEBAR */
+.dog_list thead tr th{
+    border-bottom: none!important;
+}
+.dog_list thead tr th,
+.aside_title{
+    font-weight: bold;font-family: 'Oswald', "Helvetica Neue",Helvetica,Arial,sans-serif;
+    padding-bottom: 5px;margin: 0 0 5px 0;letter-spacing: 0.05em;
+    border-bottom: 1px solid #005e7b;
+    color: #005e7b;
+}
+#top30_list li{
+    background-image: url(../images/dog1_16.png);
+    padding-left: 23px;
+    background-repeat: no-repeat;height: 30px;line-height: 25px;
+    background-position: 6px 5px;    
+}
+.sidebar-list{
+    margin-bottom: 20px;
+}
+.sidebar-list li{
+    background-image: url(../images/dog_foot_left.png);padding-left: 23px;
+    background-repeat: no-repeat;height: 25px;line-height: 25px;
+    background-position: 6px 5px;    
+    border-bottom: 1px solid #e1e1e1;
+}
+.sidebar-list li:nth-child(odd){
+    background-image: url(../images/dog_foot_right.png);padding-left: 23px;
+    background-position: 0px 4px;      
+}
+.sidebar-list li a{
+    padding-left: 5px;
+    float: left;width: 100%;
+}
+.sidebar-list li a:hover{text-decoration: none;
+      color: white;font-weight: 600;background-color: #005e7b;
+}
+.sidebar-list li:hover{border-bottom: 1px solid #adadad;}
+
+/* BOOTSTRAP 3 MODIFICATION */
+body .modal-dialog{
+      width: 940px;
+    /* must be half of the width, minus scrollbar on the left (30px) */
+    
+}
+.navbar-default{
+    background-color: #005e7b;
+    border-color: gray;    
+}
+.navbar-default .navbar-nav>li>a{
+    color: white!important;
+}
+.navbar-default .navbar-nav>li>a:hover{
+    color: #C0E4E0!important;
+}
+.navbar-default .navbar-brand{
+    color: white;
+}
+.navbar-default .navbar-brand:hover{
+    color: #C0E4E0!important;
+}
+.navbar-default .navbar-nav>.open>a, 
+.navbar-default .navbar-nav>.open>a:hover, 
+.navbar-default .navbar-nav>.open>a:focus{
+    background-color: #014d64;
+    color: #C0E4E0!important;
+}
+div.container{
+    background-color: white;
+    box-shadow: 0px 0px 5px 5px gray;-moz-box-shadow: 0px 0px 5px 5px gray;-webkit-box-shadow: 0px 0px 5px 5px gray;
+    padding-top: 10px;padding-bottom: 20px;margin-bottom: 30px;
+}
+
+
+/* ADMIN */
+.admin_home #dog_row #_name{width: 15%;}
+.admin_home #dog_row #_othername{width: 15%;}
+.admin_home #dog_row #_origin{width: 8%;}
+.admin_home #dog_row #_size{width: 12%;}
+.admin_home #dog_row #_breed{width: 12%;}
+.admin_home #dog_row #_char{width: 12%;}
+.admin_home #dog_row #_color{width: 12%;}
+.admin_home #dog_row #_action{width: 14%;}
+
+#add_new_dog{
+
+}
+#add_new_dog .form-group{
+    margin-bottom: 8px;
+}
+#add_new_dog .form-group input[type='text'].dog_rate_details{
+width: 230px;margin-left: 20px;float: left;
+}
+#add_new_dog .form-group .r_dog_char{ float: left;margin-top: 5px;}
+
+#add_new_dog h2.page-title{margin: 0 0 20px 0;}
+.admin-upload-photo img{max-width: 245px!important;}
+
+/* ADMIN Category */
+#cat_header{font-size: 0.9em;}
+#cat_header #_ch_order{width: 5%;}
+#cat_header #_ch_name{width: 20%;}
+#cat_header #_ch_seo{width: 20%;}
+#cat_header #_ch_sname{width: 15%}
+#cat_header #_ch_slug{width: 20%}
+#cat_header #_ch_action{width: 20%;}
+
+/* social */
+#social_button{
+    margin: 0 0 10px 10px;float: right;
+    padding: 0px;
+}
+#social_button li{list-style-type: none;float: left;margin: 0 5px 0 0;}
+/* AD */
+.ad72890{
+    font-size: 0.9em;
+    width: 728px;
+    height: 90px;
+    margin: 0 auto 20px auto;
+    display: block;
+    background-color: #fafafa;
+    border: 1px solid #fcfcfc;
+}
+.ad336280{
+    text-align: center;
+    font-size: 0.9em;
+    width: 360px;
+    height: 280px;    
+    margin: 0px auto 20px auto;
+    display: block;
+    background-color: #fafafa;
+    border: 1px solid #fcfcfc;
+}
+.ad-panel .sponsored-link{
+    font-size: 0.9em; color: blue;
+    text-align: center;
+}
+.ad-panel .linkunit-16090{
+    text-align: center;
+    width: 160px;
+    height: 90px;
+    margin: 0px auto 20px auto;
+    display: block;
+    background-color: #fafafa;
+    border: 1px solid #fcfcfc;
+}
+.dog-photo1{
+    
+}
+.dog-photo2{
+    
+}
+.dog-photo3{
+    
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+ }
