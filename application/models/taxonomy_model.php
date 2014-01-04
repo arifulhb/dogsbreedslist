@@ -128,6 +128,27 @@ class Taxonomy_model extends CI_Model
         
     }//end function        
     
+    public function getAllList($per_page,$offset){
+         //$_table='tbl_size_sn';
+        if($offset==''){
+            $offset=0;
+        }
+        
+        $this->db->_protect_identifiers=false;        
+        
+        //$sql='SELECT r.rank, i.item_sn, ';    
+        
+        $sql = 'SELECT i.item_sn, i.item_info_name as dog_name, i.item_slug as slug ';       
+        $sql .='FROM tbl_item as i ';                                       
+        $sql .=' ORDER BY i.item_info_name';
+        $sql .=' LIMIT '.$offset.','.$per_page;
+        
+        $query=$this->db->query($sql);       
+       
+        return $query->result_array();
+        
+    }//end function
+    
     public function getPopularList($per_page,$offset){
          //$_table='tbl_size_sn';
         if($offset==''){
@@ -189,6 +210,14 @@ class Taxonomy_model extends CI_Model
         $res    = $this->db->get();
         return $res->num_rows();
         
+    }//end function
+
+    public function getAllNum(){        
+        $this->db->select('i.item_sn');
+        $this->db->from('tbl_item i');
+        //$this->db->where('r.cat',null);
+        $res    = $this->db->get();
+        return $res->num_rows();
     }//end function
     
     public function getPopularNum(){        

@@ -61,6 +61,20 @@ class Template
         $this->_ci->load->view('page_template.php',$data);
         
     }//end function
+    
+    
+    function cat_all($data=null)
+    {        
+        $data['_navbar_home']=$this->_ci->load->view('inc/navbar_home',$data,true);        
+        $data['_content']=$this->_ci->load->view('cat/all',$data,true);
+        
+        //Page Class Name
+        $data['_page_class']='cat_all';
+
+        //Load the page
+        $this->_ci->load->view('page_template.php',$data);
+        
+    }//end function
 
     /*
      * ADMIN

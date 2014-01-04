@@ -195,7 +195,7 @@ div.container{
     box-shadow: 0px 0px 5px 5px gray;-moz-box-shadow: 0px 0px 5px 5px gray;-webkit-box-shadow: 0px 0px 5px 5px gray;
     padding-top: 10px;padding-bottom: 20px;margin-bottom: 30px;
 }
-
+.pagination_next{margin-left: 5px;}
 
 /* ADMIN */
 .admin_home #dog_row #_name{width: 15%;}

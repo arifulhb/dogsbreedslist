@@ -13,6 +13,32 @@ class Category extends CI_Controller {
     {
         
     }//end function index
+   
+     public function all(){
+        
+         $this->load->model('taxonomy_model');
+        $this->load->model('dog_model');
+                                   
+        $this->load->library('pagination');
+
+        $config=  getPaginationConfig();
+        $config['base_url'] = base_url().'category/all/';
+        $config['total_rows'] = $this->taxonomy_model->getAllNum();        
+        $config['per_page'] = 10;
+        $config['num_links'] = 5;        
+        $config['uri_segment'] = 3;        
+        $this->pagination->initialize($config);
+                      
+        $data=  site_data();        
+        $data['_page_title']="Complete List of Dog Breeds";                     
+        $data['_header_title']="Complete List of Dog Breeds";      
+        $data['_top30']=$this->dog_model->getTop30List();
+        $data['_list']=$this->taxonomy_model->getAllList($config['per_page'],$this->uri->segment(3));
+        $data['_page_url']=base_url().'category/all/'.$this->uri->segment(3);
+        //echo 'page url: '.$data['_page_url'].'<br>';
+        $this->template->cat_all($data);
+        
+    }//end function
     
     public function popular(){
         
@@ -34,6 +60,7 @@ class Category extends CI_Controller {
                       
         $data=  site_data();        
         $data['_page_title']="Most Popular Breeds";                     
+        $data['_header_title']="Most Popular Breeds";      
         $data['_top30']=$this->dog_model->getTop30List();
         $data['_list']=$this->taxonomy_model->getPopularList($config['per_page'],$this->uri->segment(3));
         $data['_page_url']=base_url().'category/popular/'.$this->uri->segment(3);
@@ -59,7 +86,7 @@ class Category extends CI_Controller {
         $config['base_url'] = base_url().'category/size/'.$slug;
         $config['total_rows'] = $this->taxonomy_model->getTaxListNum('size',$slug);        
         
-        $config['per_page'] = 10;
+        $config['per_page'] = 5;
         $config['num_links'] = 5;        
         $config['uri_segment'] = 4;        
 
