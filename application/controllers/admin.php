@@ -486,7 +486,7 @@ class Admin extends CI_Controller {
                       $data = array(
                             'user_sn' => $user[0]['user_sn'],                            
                             'user_name' => $user[0]['user_name'],
-                            'user_email' => $data['user_email'],
+                            'user_email' => $data['_user_email'],
                             
                             'is_logged_in' => true
                     );

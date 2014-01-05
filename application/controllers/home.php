@@ -27,7 +27,7 @@ class Home extends CI_Controller {
             $tmp=$this->dog_model->getSubRows($item['sn'],'tbl_size_type');        
             if(!empty($tmp)){                
                 array_push($rowdata,array('name'=>$item['name'],
-                    'count'=>count($tmp),'slug'=>'color','slug_cat'=>$item['slug'],
+                    'count'=>count($tmp),'slug'=>'size','slug_cat'=>$item['slug'],
                     'catdata'=>$tmp));                
             }
             unset($tmp);
@@ -45,7 +45,7 @@ class Home extends CI_Controller {
             $tmp=$this->dog_model->getSubRows($item['sn'],'tbl_breed');
             if(!empty($tmp)){
                  array_push($rowdata,array('name'=>$item['name'],
-                    'count'=>count($tmp),'slug'=>'color','slug_cat'=>$item['slug'],
+                    'count'=>count($tmp),'slug'=>'breed-group','slug_cat'=>$item['slug'],
                     'catdata'=>$tmp)); 
             }
             unset($tmp);
@@ -60,7 +60,7 @@ class Home extends CI_Controller {
             $tmp=$this->dog_model->getSubRows($item['sn'],'tbl_char');
             if(!empty($tmp)){
                array_push($rowdata,array('name'=>$item['name'],
-                    'count'=>count($tmp),'slug'=>'color','slug_cat'=>$item['slug'],
+                    'count'=>count($tmp),'slug'=>'characteristics','slug_cat'=>$item['slug'],
                     'catdata'=>$tmp)); 
             }
             

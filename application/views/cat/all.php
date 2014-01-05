@@ -4,7 +4,7 @@ $image_path = getImagePath();
 <div class="row">    
     <div class="col-lg-2 hidden-xs hidden-sm hidden-print">
 
-        <h2 class="sec_title">All Breeds</h2>
+        <h2 class="sec_title">Top Breeds</h2>
         <ul id="top30_list" class="sidebar-list list-unstyled">
 
             <?php
