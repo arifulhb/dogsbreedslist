@@ -27,36 +27,61 @@ class Admin extends CI_Controller {
         }
 
     }//end index
+    
+    public function user(){
+        
+        if($this->session->userdata('is_logged_in')==TRUE){
+            
+            
+            $data=site_data();     
+            $data['_page_title']='User Management';
+            $this->load->model('user_model');
+            
+            $data['user_list']=$this->user_model->getList();
+            $this->template->admin_user($data);
+            
+        }else{
+            redirect('admin/login');
+        }
+        
+    }//end function
 
     public function addNewDog(){
+        if($this->session->userdata('is_logged_in')==TRUE){
+             $data=site_data();
+            $this->load->model('taxonomy_model');
+            $data['_tax_size']=$this->taxonomy_model->getItemTaxonomyList('tbl_size_type');
+            $data['_tax_breed']=$this->taxonomy_model->getItemTaxonomyList('tbl_breed');
+            $data['_tax_char']=$this->taxonomy_model->getItemTaxonomyList('tbl_char');
+            $data['_tax_color']=$this->taxonomy_model->getItemTaxonomyList('tbl_color');
 
-        $data=site_data();
-        $this->load->model('taxonomy_model');
-        $data['_tax_size']=$this->taxonomy_model->getItemTaxonomyList('tbl_size_type');
-        $data['_tax_breed']=$this->taxonomy_model->getItemTaxonomyList('tbl_breed');
-        $data['_tax_char']=$this->taxonomy_model->getItemTaxonomyList('tbl_char');
-        $data['_tax_color']=$this->taxonomy_model->getItemTaxonomyList('tbl_color');
-
-        $data['_page_title']='Add New Item';
-        $this->template->admin_add_dog($data);
+            $data['_page_title']='Add New Item';
+            $this->template->admin_add_dog($data);
+        }else{
+            redirect('admin/login');
+        }
+       
     }//end add new dog
     
     public function update_dog($sn){
-        
-        $data=site_data();
-        $this->load->model('taxonomy_model');        
-        $data['_tax_size']=$this->taxonomy_model->getItemTaxonomyList('tbl_size_type');
-        $data['_tax_breed']=$this->taxonomy_model->getItemTaxonomyList('tbl_breed');
-        $data['_tax_char']=$this->taxonomy_model->getItemTaxonomyList('tbl_char');
-        $data['_tax_color']=$this->taxonomy_model->getItemTaxonomyList('tbl_color');
-        
-        $this->load->model('dog_model');
-        
-        $dog=$this->dog_model->getDog($sn);
-        $data['_dog_info']=$dog[0];
-        $data['_page_title']='Update Item';
-        $this->template->admin_edit_dog($data);
-        
+        if($this->session->userdata('is_logged_in')==TRUE){
+            $data=site_data();
+           $this->load->model('taxonomy_model');        
+           $data['_tax_size']=$this->taxonomy_model->getItemTaxonomyList('tbl_size_type');
+           $data['_tax_breed']=$this->taxonomy_model->getItemTaxonomyList('tbl_breed');
+           $data['_tax_char']=$this->taxonomy_model->getItemTaxonomyList('tbl_char');
+           $data['_tax_color']=$this->taxonomy_model->getItemTaxonomyList('tbl_color');
+
+           $this->load->model('dog_model');
+
+           $dog=$this->dog_model->getDog($sn);
+           $data['_dog_info']=$dog[0];
+           $data['_page_title']='Update Item';
+           $this->template->admin_edit_dog($data);   
+        }        
+        else{
+            redirect('admin/login');
+        }
     }//end function
 
     public function ranking(){
@@ -65,6 +90,7 @@ class Admin extends CI_Controller {
         if($this->session->userdata('is_logged_in')==TRUE){
         
             $data=site_data();
+            $data['_page_title']='Ranking Management';
             $this->load->model('dog_model');
             $data['_not_ranked_breed_list']=$this->dog_model->getBreedListUnranked();
             $data['_rankedBreedList']=$this->dog_model->getBreedListRanked();
@@ -77,17 +103,20 @@ class Admin extends CI_Controller {
     }//
     
     public function addRankValidation(){
+        if($this->session->userdata('is_logged_in')==TRUE){
+            $this->load->model('dog_model');
+           $data['item_sn']= $this->input->post('breed_sn',TRUE);;
+           $data['rank']= $this->input->post('rank',TRUE);;
+           $res    =$this->dog_model->addRanking($data);
 
-        $this->load->model('dog_model');
-        $data['item_sn']= $this->input->post('breed_sn',TRUE);;
-        $data['rank']= $this->input->post('rank',TRUE);;
-        $res    =$this->dog_model->addRanking($data);
-        
-        if($res==1){
-              echo $this->db->insert_id();
-          }else{
-              echo $res;   
-          }
+           if($res==1){
+                 echo $this->db->insert_id();
+             }else{
+                 echo $res;   
+             }   
+        }else{
+            redirect('admin/login');
+        }                
         
     }//end function
     
@@ -111,10 +140,14 @@ class Admin extends CI_Controller {
     
     
     public function addBreedCategoryRankAjax(){
-        
-        $data['rsn']= $this->input->post('sn',TRUE);;        
-        $res    =$this->dog_model->removeRanking($data);
-        echo $res;
+        if($this->session->userdata('is_logged_in')==TRUE){
+            $data['rsn']= $this->input->post('sn',TRUE);;        
+            $res    =$this->dog_model->removeRanking($data);
+            echo $res;    
+        }else{
+            redirect('admin/login');
+        }
+                
         
     }//end function addBreedCategoryRankAjax
     
@@ -142,80 +175,99 @@ class Admin extends CI_Controller {
     }//end function
     
     public function add_category_validation(){
+        if($this->session->userdata('is_logged_in')==TRUE){
+         
+            $data['table'] = $this->input->post('table',TRUE);        
         
-        $data['table'] = $this->input->post('table',TRUE);        
-        
-        $this->load->library('form_validation');
-        
-        $this->form_validation->set_rules('_name', 'Name', 'trim|required|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('_sname', 'Sidebar Name', 'trim|required|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('_seo', 'SEO Title', 'trim|required|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('_slug', 'Slug', 'trim|required|max_length[250]|xss_clean|is_unique['.$data['table'].'.slug]');        
-        
-        $data['name'] = $this->input->post('_name',TRUE);
-        $data['sname'] = $this->input->post('_sname',TRUE);
-        $data['seo'] = $this->input->post('_seo',TRUE);
-        $data['slug'] = $this->input->post('_slug',TRUE);
-        $data['desc'] = $this->input->post('_desc',TRUE);
-        $data['desc_bottom'] = $this->input->post('_desc_bottom',TRUE);
-        $data['order'] = $this->input->post('_order',TRUE);
-        
-        
-        if ($this->form_validation->run() == TRUE)
-        {                        
-            $this->load->model('taxonomy_model');
-            $res = $this->taxonomy_model->addTaxonomy($data);
+            $this->load->library('form_validation');
 
-            if($res==1){
-                echo $this->db->insert_id();
-            }else{
-                echo $res;   
+            $this->form_validation->set_rules('_name', 'Name', 'trim|required|max_length[250]|xss_clean');
+            $this->form_validation->set_rules('_sname', 'Sidebar Name', 'trim|required|max_length[250]|xss_clean');
+            $this->form_validation->set_rules('_seo', 'SEO Title', 'trim|required|max_length[250]|xss_clean');
+            $this->form_validation->set_rules('_slug', 'Slug', 'trim|required|max_length[250]|xss_clean|is_unique['.$data['table'].'.slug]');        
+
+            $data['name'] = $this->input->post('_name',TRUE);
+            $data['sname'] = $this->input->post('_sname',TRUE);
+            $data['seo'] = $this->input->post('_seo',TRUE);
+            $data['slug'] = $this->input->post('_slug',TRUE);
+            $data['desc'] = $this->input->post('_desc',TRUE);
+            $data['desc_bottom'] = $this->input->post('_desc_bottom',TRUE);
+            $data['order'] = $this->input->post('_order',TRUE);
+
+
+            if ($this->form_validation->run() == TRUE)
+            {                        
+                $this->load->model('taxonomy_model');
+                $res = $this->taxonomy_model->addTaxonomy($data);
+
+                if($res==1){
+                    echo $this->db->insert_id();
+                }else{
+                    echo $res;   
+                }
+
             }
-            
-        }
-        else{
-            //show dog edit page with validation error                       
-            echo validation_errors();
-        }//end else        
+            else{
+                //show dog edit page with validation error                       
+                echo validation_errors();
+            }//end else        
+        }else{
+            redirect('admin/login');
+        }                        
         
     }//end function
     
     public function remove_category_validation(){
+        if($this->session->userdata('is_logged_in')==TRUE){
+              $data['table'] = $this->input->post('table',TRUE);
+            $data['sn'] = $this->input->post('_sn',TRUE);
+
+            $this->load->model('taxonomy_model');
+            $res = $this->taxonomy_model->deleteTaxonomy($data);
+
+            echo $res;
+        }else{
+            redirect('admin/login');
+        }  
         
-        $data['table'] = $this->input->post('table',TRUE);
-        $data['sn'] = $this->input->post('_sn',TRUE);
-        
-        $this->load->model('taxonomy_model');
-        $res = $this->taxonomy_model->deleteTaxonomy($data);
-        
-        echo $res;
+      
         
     }//end function
     
     public function update_category_validation(){
-        
-        $data['table'] = $this->input->post('table',TRUE);
-        $data['sn'] = $this->input->post('_sn',TRUE);
-        $data['name'] = $this->input->post('_name',TRUE);
-        $data['sname'] = $this->input->post('_sname',TRUE);
-        $data['seo_title'] = $this->input->post('_seo_title',TRUE);
-        $data['desc'] =  $this->input->post('_desc',TRUE);
-        $data['desc_bottom'] =  $this->input->post('_desc_bottom',TRUE);
-        $data['slug'] = $this->input->post('_slug',TRUE);
-        $data['order'] = $this->input->post('_order',TRUE);
-        
-        $this->load->model('taxonomy_model');
-        $res = $this->taxonomy_model->updateTaxonomy($data);
-        
-        echo $res;
+        if($this->session->userdata('is_logged_in')==TRUE){
+               $data['table'] = $this->input->post('table',TRUE);
+            $data['sn'] = $this->input->post('_sn',TRUE);
+            $data['name'] = $this->input->post('_name',TRUE);
+            $data['sname'] = $this->input->post('_sname',TRUE);
+            $data['seo_title'] = $this->input->post('_seo_title',TRUE);
+            $data['desc'] =  $this->input->post('_desc',TRUE);
+            $data['desc_bottom'] =  $this->input->post('_desc_bottom',TRUE);
+            $data['slug'] = $this->input->post('_slug',TRUE);
+            $data['order'] = $this->input->post('_order',TRUE);
+
+            $this->load->model('taxonomy_model');
+            $res = $this->taxonomy_model->updateTaxonomy($data);
+
+            echo $res;
+        }else{
+            redirect('admin/login');
+        }  
+     
         
     }//end function
 
     public function category($cat)
     {        
-        $data= site_data();
+        if($this->session->userdata('is_logged_in')==TRUE){
+             $data= site_data();      
+             $data['_page_title']='Category Management';
         
         $this->template->admin_category($data);
+        }
+       else{
+            redirect('admin/login');
+        } 
         
     }//end function
 
@@ -402,6 +454,7 @@ class Admin extends CI_Controller {
     public function login(){
 
         $data=site_data();
+        $data['_page_title']='Log In';
         $this->template->admin_login($data);
     }//end functon login
 
@@ -410,32 +463,37 @@ class Admin extends CI_Controller {
         $this->load->library('form_validation');
 
         $this->form_validation->set_rules('txtuseremail', 'Username', 'trim|required|xss_clean');
-        $this->form_validation->set_rules('txtuseremail', 'Password', 'trim|required|xss_clean');
+        $this->form_validation->set_rules('txtuserpassword', 'Password', 'trim|required|xss_clean');
 
         $data['_user_email']=$this->input->post('txtuseremail',TRUE);
 
         if($this->form_validation->run()==TRUE){
 
-            $data['txtuserpassword']=md5($this->input->post('txtuseremail',TRUE));
+            $data['txtuserpassword']=$this->input->post('txtuserpassword',TRUE);
 
             // 1. Match User ID and password through admin model
             // 2. If match pass, set the session and make user loggedin
-
-            $user=1;
-            if($user==1){
+            
+            $this->load->model('user_model');
+            
+            $user=$this->user_model->checkpassword($data['_user_email'],$data['txtuserpassword']);
+            
+            //echo 'name: '.$user[0]['user_name'];
+            //ex/it();
+            //$user=1;
+            if(count($user)==1){
                 // 2.1  Redirect to Admin Dashboard
                       $data = array(
-                            //'user_sn' => $user[0]['user_sn'],
-                            //'user_id' => $user[0]['user_id'],
-                            //'user_first_name' => $user[0]['user_first_name'],
-                            //'user_last_name' => $user[0]['user_last_name'],
-                            //'user_email' => $user[0]['user_email'],
-                            //'user_type' => $user[0]['user_type'],
-                            //'user_can' => getUserCan($user[0]['user_type']),
-                            //'user_access'=> getUserAccess($user[0]['user_type']),
+                            'user_sn' => $user[0]['user_sn'],                            
+                            'user_name' => $user[0]['user_name'],
+                            'user_email' => $data['user_email'],
+                            
                             'is_logged_in' => true
                     );
                     $this->session->set_userdata($data);
+                    
+                    //echo 'name: '.$this->session->userdata('user_name');
+                    //exit();
                     redirect('admin/index');
 
             }else{
@@ -449,6 +507,11 @@ class Admin extends CI_Controller {
 
 
     }//end function
+    
+    public function logout(){
+        $this->session->sess_destroy();
+        redirect('home');
+    }
 
 }//end class
 ?>

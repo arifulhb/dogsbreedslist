@@ -25,6 +25,7 @@ class Template
 
     }//end home
 
+    
     /**
      * DOG
      */
@@ -75,6 +76,21 @@ class Template
         $this->_ci->load->view('page_template.php',$data);
         
     }//end function
+    
+    function admin_user($data=null)
+    {
+        //Loadign the template
+        $data['_navbar_home']=$this->_ci->load->view('admin/navbar',$data,true);
+
+        $data['_content']=$this->_ci->load->view('user/index',$data,true);
+
+        //Page Class Name
+        $data['_page_class']='admin_users';        
+
+        //Load the page
+        $this->_ci->load->view('admin_template.php',$data);
+
+    }//end home
 
     /*
      * ADMIN
@@ -170,6 +186,22 @@ class Template
         $this->_ci->load->view('admin_template.php',$data);
 
     }//end home
+    
+    function admin_cp($data=null)
+    {
+        //Loadign the template
+        $data['_navbar_home']=$this->_ci->load->view('admin/navbar',$data,true);
+
+        $data['_content']=$this->_ci->load->view('user/changepass',$data,true);
+
+        //Page Class Name
+        $data['_page_class']='admin_changepass';
+
+        //Load the page
+        $this->_ci->load->view('admin_template.php',$data);
+
+    }//end home
+    
 
     function admin_edit_dog($data=null)
     {

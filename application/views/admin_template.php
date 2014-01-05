@@ -107,7 +107,7 @@
             Copyright Note
         </div>
         <div class="col-lg-6">
-            <p class="text-right"><small>Developed by GREENTech Consultancy Services</small></p>
+            <p class="text-right"><small>Developed by <a href="http://www.arifulhaque.com/" rel="developer" title="Ariful Haque, Software Engineer | Freelance Web Developer" target="_blank">Ariful Haque</a></small></p>
         </div>
         </div>
     </footer>

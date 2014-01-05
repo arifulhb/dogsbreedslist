@@ -281,3 +281,4 @@ width: 230px;margin-left: 20px;float: left;
 .dropdown:hover .dropdown-menu {
     display: block;
  }
+ .dropdown-menu hr{margin: 5px 0px;}

@@ -31,10 +31,12 @@
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> User<b class="caret"></b></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> <?php echo $this->session->userdata('user_name');?><b class="caret"></b></a>
         <ul class="dropdown-menu">
-            <li><a href="<?php echo base_url().'admin/changepassword'?>"><i class="icon-pencil"></i> Change Password</a></li>
-            <li></li>
+            <li><a href="<?php echo base_url().'admin/user'?>"><i class="icon-user"></i> User Management</a></li>
+            <li><hr></li>
+            <li><a href="<?php echo base_url().'user/changepassword'?>"><i class="icon-pencil"></i> Change Password</a></li>
+            <li><hr></li>
             <li><a href="<?php echo base_url().'admin/logout'?>"><i class="icon-signout"></i> Log Out</a></li>
         </ul>
       </li>
