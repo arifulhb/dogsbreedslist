@@ -185,11 +185,11 @@ class Taxonomy_model extends CI_Model
         
     }//end function
 
-        public function getTaxListNum($tax,$term)
+    public function getTaxListNum($tax,$term)
     {       
         $sn= $this->getTermSN($tax,$term);
         
-        $this->db->select('item_sn');
+        $this->db->select('i.item_sn');
         $this->db->from('tbl_item i');
         
         if($tax=='size'){                                    
@@ -202,7 +202,7 @@ class Taxonomy_model extends CI_Model
             $this->db->join('tbl_breed as b','b.sn=i.breed_sn','LEFT');            
             $this->db->where('i.breed_sn',$sn[0]['sn']);
         }elseif($tax=='color'){
-            $sn= $this->getTermSN($tax,$term);
+            //$sn= $this->getTermSN($tax,$term);
             $this->db->join('tbl_color as c','c.sn=i.color_sn','LEFT');            
             $this->db->where('i.color_sn',$sn[0]['sn']);
         }

@@ -185,6 +185,7 @@ $dog_info=$details[0];
                 <div class="ad336280">
                         336x280
                  </div>
+                <?php /*
                 <!--DOG NAME-->
                 <div class="panel panel-default">
                     <div class="panel-heading"><?php echo $dog_info['item_info_name'];?> Names</div>
@@ -214,7 +215,8 @@ $dog_info=$details[0];
                             </tbody>
                         </table>
                     </div>
-                </div><!--end panel names-->                
+                </div><!--end panel names-->        
+                */?>
                 <h3 class="info_para">Grooming</h3>
                 <p><?php echo $dog_info['item_grooming'];?></p>
                 <h3 class="info_para">History</h3>

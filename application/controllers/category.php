@@ -213,7 +213,8 @@ class Category extends CI_Controller {
         $this->load->model('taxonomy_model');
         $this->load->model('dog_model');
          
-        $slug = str_replace("_", "-", $this->uri->segment(3) );
+        //$slug = str_replace("_", "-", $this->uri->segment(3) );
+        $slug = $this->uri->segment(3) ;
         
         //Pagination
         $this->load->library('pagination');
@@ -221,6 +222,7 @@ class Category extends CI_Controller {
         $config=  getPaginationConfig();
         $config['base_url'] = base_url().'category/color/'.$slug;
         $config['total_rows'] = $this->taxonomy_model->getTaxListNum('color',$slug);
+        //exit();
         $config['per_page'] = 10;
         $config['num_links'] = 5;        
         $config['uri_segment'] = 4;                

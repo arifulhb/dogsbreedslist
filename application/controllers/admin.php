@@ -232,6 +232,7 @@ class Admin extends CI_Controller {
 
     /*
      * addNewItemVerification
+     * Add/Update breeds
      */
     public function addNewItemVerification()
     {
@@ -241,9 +242,7 @@ class Admin extends CI_Controller {
 
         if($data['action']=='update')
         {
-            $data['item_sn']        =$this->input->post('item_sn',TRUE);
-            //echo 'item sn '.$data['item_sn'];
-            //exit();
+            $data['item_sn']        =$this->input->post('item_sn',TRUE);            
         }//end if
 
         $this->form_validation->set_rules('txtName', 'Name', 'trim|required|max_length[250]|xss_clean');
@@ -300,37 +299,7 @@ class Admin extends CI_Controller {
 
         $this->form_validation->set_rules('txtchr_10_text', 'Adaptability', 'trim|max_length[50]|xss_clean');
         $this->form_validation->set_rules('r_dog_char_10_val', 'Adaptability', 'trim|numeric|xss_clean');
-
-        $this->form_validation->set_rules('txt_name_m_1', 'Boy Dogs Name 1', 'trim|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('txt_name_f_1', 'Girl Dogs Name 1', 'trim|max_length[250]|xss_clean');
-
-        $this->form_validation->set_rules('txt_name_m_2', 'Boy Dogs Name 2', 'trim|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('txt_name_f_2', 'Girl Dogs Name 2', 'trim|max_length[250]|xss_clean');
-
-        $this->form_validation->set_rules('txt_name_m_3', 'Boy Dogs Name 3', 'trim|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('txt_name_f_3', 'Girl Dogs Name 3', 'trim|max_length[250]|xss_clean');
-
-        $this->form_validation->set_rules('txt_name_m_4', 'Boy Dogs Name 4', 'trim|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('txt_name_f_4', 'Girl Dogs Name 4', 'trim|max_length[250]|xss_clean');
-
-        $this->form_validation->set_rules('txt_name_m_5', 'Boy Dogs Name 5', 'trim|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('txt_name_f_5', 'Girl Dogs Name 5', 'trim|max_length[250]|xss_clean');
-
-        $this->form_validation->set_rules('txt_name_m_6', 'Boy Dogs Name 6', 'trim|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('txt_name_f_6', 'Girl Dogs Name 6', 'trim|max_length[250]|xss_clean');
-
-        $this->form_validation->set_rules('txt_name_m_7', 'Boy Dogs Name 7', 'trim|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('txt_name_f_7', 'Girl Dogs Name 7', 'trim|max_length[250]|xss_clean');
-
-        $this->form_validation->set_rules('txt_name_m_8', 'Boy Dogs Name 8', 'trim|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('txt_name_f_8', 'Girl Dogs Name 8', 'trim|max_length[250]|xss_clean');
-
-        $this->form_validation->set_rules('txt_name_m_9', 'Boy Dogs Name 9', 'trim|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('txt_name_f_9', 'Girl Dogs Name 9', 'trim|max_length[250]|xss_clean');
-
-        $this->form_validation->set_rules('txt_name_m_10', 'Boy Dogs Name 10', 'trim|max_length[250]|xss_clean');
-        $this->form_validation->set_rules('txt_name_f_10', 'Girl Dogs Name 10', 'trim|max_length[250]|xss_clean');
-
+                
 
         //BASIC INFO
         $data['item_slug'] = $this->input->post('txt_item_slug',TRUE);
@@ -363,30 +332,8 @@ class Admin extends CI_Controller {
         $data['item_tasty_tidbits'] = $this->input->post('txt_tasty_tidbits',TRUE);
         $data['item_grooming'] = $this->input->post('txt_grooming',TRUE);
         $data['item_history'] = $this->input->post('txt_history',TRUE);
-        $data['item_more'] = $this->input->post('txt_more',TRUE);
-
-        //Names
-        $data['item_name_m_1'] = $this->input->post('txt_name_m_1',TRUE);
-        $data['item_name_f_1'] = $this->input->post('txt_name_f_1',TRUE);
-        $data['item_name_m_2'] = $this->input->post('txt_name_m_2',TRUE);
-        $data['item_name_f_2'] = $this->input->post('txt_name_f_2',TRUE);
-        $data['item_name_m_3'] = $this->input->post('txt_name_m_3',TRUE);
-        $data['item_name_f_3'] = $this->input->post('txt_name_f_3',TRUE);
-        $data['item_name_m_4'] = $this->input->post('txt_name_m_4',TRUE);
-        $data['item_name_f_4'] = $this->input->post('txt_name_f_4',TRUE);
-        $data['item_name_m_5'] = $this->input->post('txt_name_m_5',TRUE);
-        $data['item_name_f_5'] = $this->input->post('txt_name_f_5',TRUE);
-        $data['item_name_m_6'] = $this->input->post('txt_name_m_6',TRUE);
-        $data['item_name_f_6'] = $this->input->post('txt_name_f_6',TRUE);
-        $data['item_name_m_7'] = $this->input->post('txt_name_m_7',TRUE);
-        $data['item_name_f_7'] = $this->input->post('txt_name_f_7',TRUE);
-        $data['item_name_m_8'] = $this->input->post('txt_name_m_8',TRUE);
-        $data['item_name_f_8'] = $this->input->post('txt_name_f_8',TRUE);
-        $data['item_name_m_9'] = $this->input->post('txt_name_m_9',TRUE);
-        $data['item_name_f_9'] = $this->input->post('txt_name_f_9',TRUE);
-        $data['item_name_m_10'] = $this->input->post('txt_name_m_10',TRUE);
-        $data['item_name_f_10'] = $this->input->post('txt_name_f_10',TRUE);
-
+        $data['item_more'] = $this->input->post('txt_more',TRUE);       
+        
         //Characteristics
         $data['item_char_1_text']   = $this->input->post('txtchr_1_text',TRUE);
         $data['item_char_1_value']  = $this->input->post('r_dog_char_1_val',TRUE);

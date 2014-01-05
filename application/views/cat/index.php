@@ -49,6 +49,9 @@ foreach ($_top30 as $item) {
         }  
         ?>
         </div>
+        <div class="ad72890">
+            AD 728X90
+        </div>
         <table class="table table-hover table-responsive table-bordered dog_list">
             <thead>
                 <tr>
@@ -93,6 +96,14 @@ foreach ($_top30 as $item) {
                 ?>
             </tbody>
         </table>
+        <div class="" style="float: left;text-align: left;width: 100%;">
+            <div class="ad336280" style="float: left;">
+                AD 1 336x280
+            </div>
+            <div class="ad336280" style="float: right;">
+                AD 2 336x280
+            </div>
+        </div>
         <div class="desc_bottom">
             <?php 
             if(isset($_desc_bottom)){

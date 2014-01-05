@@ -302,6 +302,46 @@ class Dog_model extends CI_Model
         return $res;
         
     }//end function
+    
+    public function getSubList($cat){
+        
+        $this->db->select('sn, name, slug');
+        $this->db->from ($cat);
+        $res=$this->db->get();
+        
+        return $res->result_array();
+        
+    }//end function 
+    
+    
+    public function getSubRows($sn,$cat){
+        
+        $this->db->select('r.rsn,r.rank, r.item_sn, i.item_info_name, i.item_slug as slug, i.photo1,
+            i.item_info_other_name as other_name, i.item_info_origin as origin,
+            s.name as size_type, s.sn as size_sn, s.slug as size_slug');
+        $this->db->from('tbl_ranking as r');
+        if($cat=='tbl_size_type'){
+            $this->db->join('tbl_size_type AS s','s.sn=r.cat_sn','LEFT OUTER');        
+        }
+        elseif($cat=='tbl_breed'){
+            $this->db->join('tbl_breed AS s','s.sn=r.cat_sn','LEFT OUTER');        
+        }
+        elseif($cat=='tbl_char'){
+            $this->db->join('tbl_char AS s','s.sn=r.cat_sn','LEFT OUTER');        
+        }
+        elseif($cat=='tbl_color'){
+            $this->db->join('tbl_color AS s','s.sn=r.cat_sn','LEFT OUTER');        
+        }
+        $this->db->join('tbl_item AS i','i.item_sn=r.item_sn','LEFT OUTER');
+        
+        $this->db->where('r.cat_sn',$sn);
+        $this->db->where('r.cat',$cat);
+        $this->db->order_by('r.rank');
+        $this->db->limit(4);
+        $res=$this->db->get();
+        
+        return $res->result_array();
+    }//end function
 
     public function getList($cat)
     {
@@ -331,7 +371,9 @@ class Dog_model extends CI_Model
                 break;;
         endswitch;
         
-        $res=$this->db->get();        
+        $res=$this->db->get();      
+        //echo $this->db->last_query();
+        //exit();
         return $res->result_array();
         
     }// end function

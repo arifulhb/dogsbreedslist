@@ -54,6 +54,9 @@ if (isset($_blurb)) {
 }
 ?>
         </div>
+        <div class="ad72890">
+            AD 728X90
+        </div>
         <table class="table table-hover table-responsive table-bordered dog_list">
             <thead>
                 <tr>                    

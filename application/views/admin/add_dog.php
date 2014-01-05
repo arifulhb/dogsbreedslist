@@ -232,7 +232,7 @@
                 </div>
              </div><!--panel body-->
         </div><!--primary panel-->
-
+        <?php /*
         <div class="panel panel-primary">
             <div class="panel-heading">Common Names</div>
                 <div class="panel-body">
@@ -368,7 +368,7 @@
                     </table>
                 </div>
         </div>
-
+        */?>
     </div>
         <div class="col-xs-6">
 
@@ -534,7 +534,7 @@
 
 </div>
 <div class="row">
-    
+    <div class="col-sm-12">
         <div class="panel panel-primary">
             <div class="panel-heading">Details</div>
                 <div class="panel-body">
@@ -613,6 +613,7 @@
 
                 </div><!--end panel body-->
             </div><!--end details panel-->    
+</div>
 </div><!--end row-->    
         
 <div class="row">
