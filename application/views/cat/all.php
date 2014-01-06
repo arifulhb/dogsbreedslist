@@ -100,7 +100,7 @@ if (isset($_blurb)) {
         }
         ?>
         </div>
-<?php echo $this->pagination->create_links(); ?>
+<?php //echo $this->pagination->create_links(); ?>
     </div>
     <div class="col-lg-2">
 <?php

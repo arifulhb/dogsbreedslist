@@ -19,6 +19,7 @@ class Category extends CI_Controller {
          $this->load->model('taxonomy_model');
         $this->load->model('dog_model');
                                    
+        /*
         $this->load->library('pagination');
 
         $config=  getPaginationConfig();
@@ -27,13 +28,13 @@ class Category extends CI_Controller {
         $config['per_page'] = 10;
         $config['num_links'] = 5;        
         $config['uri_segment'] = 3;        
-        $this->pagination->initialize($config);
+        $this->pagination->initialize($config);*/
                       
         $data=  site_data();        
         $data['_page_title']="Complete List of Dog Breeds";                     
         $data['_header_title']="Complete List of Dog Breeds";      
         $data['_top30']=$this->dog_model->getTop30List();
-        $data['_list']=$this->taxonomy_model->getAllList($config['per_page'],$this->uri->segment(3));
+        $data['_list']=$this->taxonomy_model->getAllList();
         $data['_page_url']=base_url().'category/all/'.$this->uri->segment(3);
         //echo 'page url: '.$data['_page_url'].'<br>';
         $this->template->cat_all($data);

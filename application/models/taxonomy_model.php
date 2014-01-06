@@ -128,11 +128,8 @@ class Taxonomy_model extends CI_Model
         
     }//end function        
     
-    public function getAllList($per_page,$offset){
-         //$_table='tbl_size_sn';
-        if($offset==''){
-            $offset=0;
-        }
+    public function getAllList(){
+      
         
         $this->db->_protect_identifiers=false;        
         
@@ -141,7 +138,7 @@ class Taxonomy_model extends CI_Model
         $sql = 'SELECT i.item_sn, i.item_info_name as dog_name, i.item_slug as slug ';       
         $sql .='FROM tbl_item as i ';                                       
         $sql .=' ORDER BY i.item_info_name';
-        $sql .=' LIMIT '.$offset.','.$per_page;
+        //$sql .=' LIMIT '.$offset.','.$per_page;
         
         $query=$this->db->query($sql);       
        

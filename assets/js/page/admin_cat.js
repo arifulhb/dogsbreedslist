@@ -32,7 +32,7 @@ require(['order!jquery','order!apppath','order!json2','order!bootstrap','order!t
                      var item = $.parseJSON(mydata);                                    
                     for (var i=0;i<item.length;i++)
                     {
-                        console.log(item[i]);
+                        //console.log(item[i]);
                         var _sn = item[i].sn;
                         var _name = item[i].name;
                         var _sidebar_name = item[i].name_sidebar;
@@ -43,10 +43,12 @@ require(['order!jquery','order!apppath','order!json2','order!bootstrap','order!t
                         var _order = item[i].order;
                         var _slug = item[i].slug;
                         //console.log('Name: '+_name+' Sidebar Name: '+_sidebar_name+' Slug '+_slug);
-                        console.log('desc '+_desc);
+                        //console.log('desc '+_desc);
                          var row='<tr id="row_id_'+_sn+'">';
                             //row+='<td>'+_sn+'</td>';
+                            //_desc = _desc.replace();
                             row+='<input type="hidden" id="desc_'+_sn+'" value=\''+_desc+'\'/>';
+                            //row+='<div id="desc_'+_sn+'">1111</div>';
                             row+='<input type="hidden" id="desc_bottom_'+_sn+'" value=\''+_desc_bottom+'\'/>';
                             row+='<td id="row_cat_order_'+_sn+'">'+_order+'</td>';
                             row+='<td id="row_cat_name_'+_sn+'">'+_name+'</td>';

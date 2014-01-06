@@ -14,7 +14,7 @@ $image_path=  getImagePath();
                 'size'=>array('name'=>'Size Type','slug'=>'_size','dbslug'=>'size'),
                 'breed'=>array('name'=>'Breed Group','slug'=>'_breed','dbslug'=>'breed-group'),
                 'char'=>array('name'=>'Characteristics','slug'=>'_char','dbslug'>'char'),
-                'color'=>array('name'=>'Color Type','slug'=>'_color','dbslug'=>'color')
+                'color'=>array('name'=>'Color','slug'=>'_color','dbslug'=>'color')
                     );
                 
         foreach($category as $cat)

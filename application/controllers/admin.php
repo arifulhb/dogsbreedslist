@@ -257,7 +257,7 @@ class Admin extends CI_Controller {
         
     }//end function
 
-    public function category($cat)
+    public function category()
     {        
         if($this->session->userdata('is_logged_in')==TRUE){
              $data= site_data();      
