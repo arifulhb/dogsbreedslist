@@ -1,6 +1,8 @@
 /* LAYOUT */
 body{
-    background-color: #fafafa;
+    /*background-color: #fafafa;*/
+    background-color: #f5f5f5;
+    
 }
 
 /* UTILITY*/
@@ -192,7 +194,7 @@ body .modal-dialog{
 }
 div.container{
     background-color: white;
-    box-shadow: 0px 0px 5px 5px gray;-moz-box-shadow: 0px 0px 5px 5px gray;-webkit-box-shadow: 0px 0px 5px 5px gray;
+    box-shadow: 0px 0px 5px 5px #ebebeb;-moz-box-shadow: 0px 0px 5px 5px #ebebeb;-webkit-box-shadow: 0px 0px 5px 5px #ebebeb;
     padding-top: 10px;padding-bottom: 20px;margin-bottom: 30px;
 }
 .pagination_next{margin-left: 5px;}

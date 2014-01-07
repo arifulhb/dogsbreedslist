@@ -202,7 +202,7 @@ class Dog_model extends CI_Model
                 'item_grooming'=>$data['item_grooming'],
                 'item_history'=>$data['item_history'],                
                 'item_more'=>$data['item_more'],
-                'item_name_m_1'=>$data['item_name_m_1'],
+                /*'item_name_m_1'=>$data['item_name_m_1'],
                 'item_name_f_1'=>$data['item_name_f_1'],
                 'item_name_m_2'=>$data['item_name_m_2'],
                 'item_name_f_2'=>$data['item_name_f_2'],
@@ -221,7 +221,7 @@ class Dog_model extends CI_Model
                 'item_name_m_9'=>$data['item_name_m_9'],
                 'item_name_f_9'=>$data['item_name_f_9'],
                 'item_name_m_10'=>$data['item_name_m_10'],
-                'item_name_f_10'=>$data['item_name_f_10'],
+                'item_name_f_10'=>$data['item_name_f_10'],*/
 
                 'item_char_1_text'=>$data['item_char_1_text'],
                 'item_char_1_value'=>$data['item_char_1_value'],
@@ -262,14 +262,17 @@ class Dog_model extends CI_Model
             $_sn=$data['item_sn'];
             
             if($data['upload_1']=='on'){
-             $_upres_1= $this->upload_photo('photo1',$_sn,$data['photo1']);            
-             $item['photo1']=$_upres_1['file_name'];   
+                //echo 'update 1';
+                $_upres_1= $this->upload_photo('photo1',$_sn,$data['photo1']);            
+                $item['photo1']=$_upres_1['file_name'];   
             }                        
             if($data['upload_2']=='on'){
+                //echo 'update 2';
              $_upres_2= $this->upload_photo('photo2',$_sn,$data['photo2']);            
              $item['photo2']=$_upres_2['file_name'];   
             }                        
             if($data['upload_3']=='on'){
+                //echo 'update 3';
              $_upres_3= $this->upload_photo('photo3',$_sn,$data['photo3']);            
              $item['photo3']=$_upres_3['file_name'];   
             }                        

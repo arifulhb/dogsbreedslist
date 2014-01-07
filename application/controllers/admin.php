@@ -415,6 +415,13 @@ class Admin extends CI_Controller {
         $data['photo3']  = $this->input->post('photo3',TRUE);
         $data['upload_3']  = $this->input->post('upload_3',TRUE);
 
+        /*echo 'photo 1: '.$data['photo1'].'<br>';
+        echo 'upload 1: '.$data['upload_1'].'<br>';
+        echo 'photo 2: '.$data['photo2'].'<br>';
+        echo 'upload 2: '.$data['upload_2'].'<br>';
+        echo 'photo 3: '.$data['photo3'].'<br>';
+        echo 'upload 3: '.$data['upload_3'].'<br>';*/
+        //exit();
         if ($this->form_validation->run() == TRUE)
         {
 

@@ -3,7 +3,7 @@
 function site_data()
     {
 
-        $data['_site_title']='DogBreedsInfo';
+        $data['_site_title']='Dog Breeds Index';
         $data['_site_description']='SITE DESCRIPTION';
         $data['_author']='Ariful Haque Bhuiyan';
 

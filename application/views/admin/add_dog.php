@@ -379,8 +379,7 @@
                     <label for="" class="col-lg-3 control-label">Image for List <small>Dimension: Min 170w x 128h</small></label><br>                    
                     <div class="col-lg-6">                           
                         <?php
-                        if($item['photo1']!=''){
-                            //print_r($item['photo1']);
+                        if($item['photo1']!=''){                            
                             ?>
                              <img class="img-rounded img-thumbnail" src="<?php echo base_url().'store/images/'.$item['photo1'];?>" />   
                              <?php
