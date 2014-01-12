@@ -130,13 +130,13 @@ class Category extends CI_Controller {
         $this->load->model('taxonomy_model');
         $this->load->model('dog_model');
          
-        $slug = str_replace("_", "-", $this->uri->segment(3) );
-        
+        //$slug = str_replace("_", "-", $this->uri->segment(3) );
+        $slug = $this->uri->segment(3);
         //Pagination
         $this->load->library('pagination');
 
         $config=  getPaginationConfig();
-        $config['base_url'] = base_url().'category/breed-group/'.$slug;
+        $config['base_url'] = base_url().'category/breed_group/'.$slug;
         $config['total_rows'] = $this->taxonomy_model->getTaxListNum('breed',$slug);
         $config['per_page'] = 10;
         $config['num_links'] = 5;        
@@ -152,11 +152,8 @@ class Category extends CI_Controller {
         
         $data['_blurb']=$name[0]['desc'];
         $data['_desc_bottom']=$name[0]['desc_bottom'];
-         $_page=$this->uri->segment(4);
-         
-         if($_page!=''){
-             //$data['_page_title']=$name[0]['name'].' Page - '.$_page;
-         }                
+        //$_page=$this->uri->segment(4);
+                  
         
         $data['_top30']=$this->dog_model->getTop30List();
         $data['_list']=$this->taxonomy_model->getTaxList('breed',$slug,$config['per_page'],$this->uri->segment(4));

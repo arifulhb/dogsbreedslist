@@ -12,7 +12,7 @@ $image_path=  getImagePath();
         <?php        
         $category=array(         
                 'size'=>array('name'=>'Size','slug'=>'_size','dbslug'=>'size'),
-                'breed'=>array('name'=>'Breed Group','slug'=>'_breed','dbslug'=>'breed-group'),
+                'breed'=>array('name'=>'Breed Group','slug'=>'_breed','dbslug'=>'breed_group'),
                 'char'=>array('name'=>'Characteristics','slug'=>'_char','dbslug'>'char'),
                 'color'=>array('name'=>'Color','slug'=>'_color','dbslug'=>'color')
                     );
@@ -26,6 +26,7 @@ $image_path=  getImagePath();
              $i=1;
              foreach(${$cat['slug']} as $item)
              {
+                 //print_r($item);
                  $count=$item['count'];                 
                  ?>
                     <h4><a href="<?php echo base_url().'category/'.$item['slug'].'/'.$item['slug_cat'];?>"><?php echo $item['name'];?></a></h4>

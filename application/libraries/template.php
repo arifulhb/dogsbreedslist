@@ -25,6 +25,22 @@ class Template
 
     }//end home
 
+    //Load the Home Page
+    function privacy_policy($data=null)
+    {
+        //Loadign the template        
+        $data['_navbar_home']=$this->_ci->load->view('inc/navbar_home',$data,true);        
+        $data['_content']=$this->_ci->load->view('inc/privacy',$data,true);
+        
+        $data['_noindex']=true;
+        //Page Class Name        
+        $data['_page_class']='home';
+
+        //Load the page
+        $this->_ci->load->view('page_template.php',$data);
+
+    }//end home
+
     
     /**
      * DOG
@@ -81,7 +97,7 @@ class Template
     {
         //Loadign the template
         $data['_navbar_home']=$this->_ci->load->view('admin/navbar',$data,true);
-
+        $data['_noindex']=true;
         $data['_content']=$this->_ci->load->view('user/index',$data,true);
 
         //Page Class Name
@@ -103,12 +119,9 @@ class Template
 
         $data['_content']=$this->_ci->load->view('admin/index',$data,true);
 
-
         //Page Class Name
-        $data['_page_class']='admin_home';
-        //Enable to Load Required JavaScript
-        //$data['_sliderjs']=true;
-        //$data['_passstrength']=true;
+        $data['_page_class']='admin_home';        
+        $data['_noindex']=true;
 
         //Load the page
         $this->_ci->load->view('admin_template.php',$data);
@@ -119,7 +132,7 @@ class Template
     {
         //Loadign the template
         $data['_navbar_home']=$this->_ci->load->view('admin/navbar',$data,true);
-        
+        $data['_noindex']=true;
         $data['_content']=$this->_ci->load->view('admin/update_cat',$data,true);
         
         //Page Class Name
@@ -132,6 +145,7 @@ class Template
     
     public function admin_category($data=null)
     {
+        $data['_noindex']=true;
         //Loadign the template
         $data['_navbar_home']=$this->_ci->load->view('admin/navbar',$data,true);
         
@@ -149,9 +163,11 @@ class Template
         
             //Loadign the template
         $data['_navbar_home']=$this->_ci->load->view('admin/navbar',$data,true);
-        
+                $data['_noindex']=true;
         $data['_content']=$this->_ci->load->view('admin/ranking',$data,true);
         
+        $data['_noindex']=true;
+                
         //Page Class Name
         $data['_page_class']='admin_ranking';        
         //Load the page
@@ -161,7 +177,9 @@ class Template
     public function admin_ranking_category($data=null)
     {
         
-            //Loadign the template
+        $data['_noindex']=true;        
+        
+        //Loadign the template
         $data['_navbar_home']=$this->_ci->load->view('admin/navbar',$data,true);
         
         $data['_content']=$this->_ci->load->view('admin/ranking_category',$data,true);
@@ -176,7 +194,7 @@ class Template
     {
         //Loadign the template
         $data['_navbar_home']=$this->_ci->load->view('admin/navbar',$data,true);
-
+        $data['_noindex']=true;
         $data['_content']=$this->_ci->load->view('admin/add_dog',$data,true);
 
         //Page Class Name
@@ -189,6 +207,7 @@ class Template
     
     function admin_cp($data=null)
     {
+        $data['_noindex']=true;
         //Loadign the template
         $data['_navbar_home']=$this->_ci->load->view('admin/navbar',$data,true);
 
@@ -207,9 +226,9 @@ class Template
     {
             //Loadign the template
         $data['_navbar_home']=$this->_ci->load->view('admin/navbar',$data,true);
-
+        $data['_noindex']=true;
         $data['_content']=$this->_ci->load->view('admin/add_dog',$data,true);
-
+        $data['_noindex']=true;
         //Page Class Name
         $data['_page_class']='admin_add_dog';
 
@@ -222,7 +241,7 @@ class Template
     {
         //Loadign the template
         //$data['_navbar_home']=$this->_ci->load->view('',$data,true);
-
+                $data['_noindex']=true;
         $data['_content']=$this->_ci->load->view('admin/login',$data,true);
 
         //Page Class Name

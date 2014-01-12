@@ -21,7 +21,7 @@ endforeach;
 <?php
 
 foreach($_tax_breed as $item): ?>
-    <li><a href="<?php echo base_url().'category/breed-group/'.$item['slug'];?>"><?php echo $item['name_sidebar'];?></a></li>
+    <li><a href="<?php echo base_url().'category/breed_group/'.$item['slug'];?>"><?php echo $item['name_sidebar'];?></a></li>
 <?php
 endforeach;
 ?>

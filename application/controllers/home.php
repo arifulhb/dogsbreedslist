@@ -10,12 +10,10 @@ class Home extends CI_Controller {
     }//end constractor
 
     public function index()
-    {
-      
-        $this->load->model('dog_model');
-
+    {      
         $data=site_data();
 
+        $this->load->model('dog_model');
         $data['_top10']=$this->dog_model->getTop10();
         //$data['_latest']=$this->dog_model->getList('latest');
         
@@ -45,7 +43,7 @@ class Home extends CI_Controller {
             $tmp=$this->dog_model->getSubRows($item['sn'],'tbl_breed');
             if(!empty($tmp)){
                  array_push($rowdata,array('name'=>$item['name'],
-                    'count'=>count($tmp),'slug'=>'breed-group','slug_cat'=>$item['slug'],
+                    'count'=>count($tmp),'slug'=>'breed_group','slug_cat'=>$item['slug'],
                     'catdata'=>$tmp)); 
             }
             unset($tmp);
